@@ -33,6 +33,23 @@ test('try npm-shrinkwrap detect', function (t) {
   }).catch(t.threw).then(t.end);
 });
 
+test('try package with no leading, newline trailing', function (t) {
+  var location = 'node_modules/@remy/snyk-shrink-test';
+
+  var exists = fs.existsSync(location);
+
+  if (!exists) {
+    location = 'node_modules/snyk-resolve-deps-fixtures/node_modules/@remy/snyk-shrink-test';
+  }
+
+  var filename = path.resolve(__dirname, '..', location, 'package.json');
+  tryRequire(filename).then(function (res) {
+    t.notEqual(res, null, 'package was found');
+    t.equal(res.leading, '', 'leading is empty string');
+    t.equal(res.trailing, '\n', 'trailing is newline');
+  }).catch(t.threw).then(t.end);
+});
+
 
 test('try successful require and cached response', function (t) {
   var filename = path.resolve(__dirname, '..',

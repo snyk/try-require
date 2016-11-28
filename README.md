@@ -12,3 +12,4 @@ What snyk-try-require does:
 - Adds `__filename` containing the full original path to the package
 - If a Snyk policy is present, will add the path of the policy to the `snyk` property
 - If the package uses `npm-shrinkwrap.json` will include a `shrinkwrap` boolean property
+- Returns the `leading` and `trailing` whitespace of the original `package.json` file as a `leading` and `trailing` property respectively
