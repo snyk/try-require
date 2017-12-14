@@ -8,7 +8,9 @@
     "env": "node -e 'console.log(process.env, process.versions)'",
     "cover": "tap test/*.test.js --cov --coverage-report=lcov",
     "test": "npm run check-tests && npm run lint && tap test/*.test.js --cov --timeout=60",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -33,6 +35,8 @@
     "es6-promise": "^3.1.2",
     "lodash.clonedeep": "^4.3.0",
     "lru-cache": "^4.0.0",
-    "then-fs": "^2.0.0"
-  }
+    "then-fs": "^2.0.0",
+    "snyk": "^1.59.0"
+  },
+  "snyk": true
 }
