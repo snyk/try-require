@@ -26,11 +26,10 @@
     "snyk-resolve-deps-fixtures": "^1.1.5",
     "tap": "^5.5.0",
     "tap-only": "0.0.5",
-    "semantic-release": "^4.3.5"
+    "semantic-release": "^8.0.0"
   },
   "dependencies": {
-    "debug": "^2.2.0",
-    "es6-promise": "^3.1.2",
+    "debug": "^3.1.0",
     "lodash.clonedeep": "^4.3.0",
     "lru-cache": "^4.0.0",
     "then-fs": "^2.0.0"
