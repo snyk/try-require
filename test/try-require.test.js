@@ -22,6 +22,7 @@ test('try utf8 package require with BOM', function (t) {
     t.notEqual(res, null, 'loaded the package');
     t.equal(res.name, 'fixtures', 'name was inferred from directory name');
     t.notEqual(res.dependencies, undefined, 'has dependencies property');
+    t.equal(res.leading[0], '\ufeff', 'BOM captured as a leading first char');
   }).catch(t.threw).then(t.end);
 });
 
