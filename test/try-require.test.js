@@ -1,7 +1,7 @@
-var test = require('tap-only');
-var tryRequire = require('../lib/try-require');
-var path = require('path');
-var fs = require('fs');
+const test = require('tap-only');
+const tryRequire = require('../lib/try-require');
+const path = require('path');
+const fs = require('fs');
 
 test('try failure require', function (t) {
   tryRequire('./unknown').then(function (res) {
@@ -27,15 +27,15 @@ test('try utf8 package require with BOM', function (t) {
 });
 
 test('try npm-shrinkwrap detect', function (t) {
-  var location = 'node_modules/@remy/snyk-shrink-test';
+  let location = 'node_modules/@remy/snyk-shrink-test';
 
-  var exists = fs.existsSync(location);
+  const exists = fs.existsSync(location);
 
   if (!exists) {
     location = 'node_modules/snyk-resolve-deps-fixtures/node_modules/@remy/snyk-shrink-test';
   }
 
-  var filename = path.resolve(__dirname, '..', location, 'package.json');
+  const filename = path.resolve(__dirname, '..', location, 'package.json');
   tryRequire(filename).then(function (res) {
     t.notEqual(res, null, 'package was found');
     t.equal(res.shrinkwrap, true, 'has and knows about shrinkwrap');
@@ -43,15 +43,15 @@ test('try npm-shrinkwrap detect', function (t) {
 });
 
 test('try package with no leading, newline trailing', function (t) {
-  var location = 'node_modules/@remy/snyk-shrink-test';
+  let location = 'node_modules/@remy/snyk-shrink-test';
 
-  var exists = fs.existsSync(location);
+  const exists = fs.existsSync(location);
 
   if (!exists) {
     location = 'node_modules/snyk-resolve-deps-fixtures/node_modules/@remy/snyk-shrink-test';
   }
 
-  var filename = path.resolve(__dirname, '..', location, 'package.json');
+  const filename = path.resolve(__dirname, '..', location, 'package.json');
   tryRequire(filename).then(function (res) {
     t.notEqual(res, null, 'package was found');
     t.equal(res.leading, '', 'leading is empty string');
@@ -61,7 +61,7 @@ test('try package with no leading, newline trailing', function (t) {
 
 
 test('try successful require and cached response', function (t) {
-  var filename = path.resolve(__dirname, '..',
+  const filename = path.resolve(__dirname, '..',
     'node_modules/snyk-resolve-deps-fixtures/node_modules/uglify-package/package.json');
   t.plan(4);
 
