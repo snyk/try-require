@@ -1,4 +1,5 @@
 sudo: false
+dist: bionic
 language: node_js
 cache:
   directories:
@@ -7,12 +8,7 @@ notifications:
   email: true
 node_js:
   - '6'
-  - '4'
 after_success:
-  # custom travis_after_all script under @remy's private gist
-  - 'curl -Lo travis_after_all.py https://git.io/vzaBe'
-  - python travis_after_all.py
-  - 'export $(cat .to_export_back) &> /dev/null'
   - npm run semantic-release
 branches:
   except:
