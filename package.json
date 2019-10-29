@@ -3,7 +3,7 @@
   "description": "Snyk package loading system with policy detection",
   "main": "lib/try-require.js",
   "scripts": {
-    "lint": "jscs lib/*.js -v",
+    "lint": "eslint lib test",
     "check-tests": "! grep 'test.only' test/*.test.js -n",
     "env": "node -e 'console.log(process.env, process.versions)'",
     "cover": "tap test/*.test.js --cov --coverage-report=lcov",
@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/Snyk/try-require#readme",
   "devDependencies": {
-    "jscs": "^3.0.7",
+    "eslint": "^5.16.0",
     "snyk-resolve-deps-fixtures": "^1.1.6",
     "tap": "^12.7.0",
     "tap-only": "0.0.5"
