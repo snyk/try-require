@@ -1,7 +1,6 @@
 const test = require('tap-only');
 const tryRequire = require('../lib/try-require');
 const path = require('path');
-const fs = require('fs');
 
 test('try failure require', function (t) {
   tryRequire('./unknown').then(function (res) {
@@ -27,15 +26,7 @@ test('try utf8 package require with BOM', function (t) {
 });
 
 test('try npm-shrinkwrap detect', function (t) {
-  let location = 'node_modules/@remy/snyk-shrink-test';
-
-  const exists = fs.existsSync(location);
-
-  if (!exists) {
-    location = 'node_modules/snyk-resolve-deps-fixtures/node_modules/@remy/snyk-shrink-test';
-  }
-
-  const filename = path.resolve(__dirname, '..', location, 'package.json');
+  const filename = path.resolve(__dirname, 'fixtures', 'shrink-test-v1', 'package.json');
   tryRequire(filename).then(function (res) {
     t.notEqual(res, null, 'package was found');
     t.equal(res.shrinkwrap, true, 'has and knows about shrinkwrap');
@@ -43,15 +34,7 @@ test('try npm-shrinkwrap detect', function (t) {
 });
 
 test('try package with no leading, newline trailing', function (t) {
-  let location = 'node_modules/@remy/snyk-shrink-test';
-
-  const exists = fs.existsSync(location);
-
-  if (!exists) {
-    location = 'node_modules/snyk-resolve-deps-fixtures/node_modules/@remy/snyk-shrink-test';
-  }
-
-  const filename = path.resolve(__dirname, '..', location, 'package.json');
+  const filename = path.resolve(__dirname, 'fixtures', 'shrink-test-v1', 'package.json');
   tryRequire(filename).then(function (res) {
     t.notEqual(res, null, 'package was found');
     t.equal(res.leading, '', 'leading is empty string');
@@ -61,8 +44,7 @@ test('try package with no leading, newline trailing', function (t) {
 
 
 test('try successful require and cached response', function (t) {
-  const filename = path.resolve(__dirname, '..',
-    'node_modules/snyk-resolve-deps-fixtures/node_modules/uglify-package/package.json');
+  const filename = path.resolve(__dirname, 'fixtures', 'with-policy', 'package.json');
   t.plan(4);
 
   tryRequire(filename).then(function (pkg) {
