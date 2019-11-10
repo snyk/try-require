@@ -1,0 +1,14 @@
+{
+  "name": "with-policy",
+  "version": "1.0.0",
+  "author": "snyk",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "ISC",
+  "main": "index.js",
+  "dependencies": {
+    "uglify-js": "^3.6.8",
+    "snyk-go-plugin": "1.11.1"
+  }
+}
