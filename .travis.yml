@@ -7,9 +7,15 @@ cache:
 notifications:
   email: true
 node_js:
-  - '6'
-after_success:
-  - npm run semantic-release
+  - '12'
+  - '10'
+  - '8'
+jobs:
+  include:
+    - stage: Release
+      node_js: "12"
+      after_success:
+        - npx semantic-release
 branches:
   except:
     - "/^v\\d+\\.\\d+\\.\\d+$/"
