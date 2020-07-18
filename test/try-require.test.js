@@ -1,4 +1,4 @@
-const test = require('tap-only');
+const { test } = require('tap');
 const tryRequire = require('../lib/try-require');
 const path = require('path');
 

@@ -24,8 +24,7 @@
   "homepage": "https://github.com/Snyk/try-require#readme",
   "devDependencies": {
     "eslint": "^5.16.0",
-    "tap": "^12.7.0",
-    "tap-only": "0.0.5"
+    "tap": "^14.10.7"
   },
   "dependencies": {
     "debug": "^4.1.1",
