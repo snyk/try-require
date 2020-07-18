@@ -3,7 +3,7 @@ const tryRequire = require('../lib/try-require');
 const path = require('path');
 
 test('try failure require', async (t) => {
-  const res = await tryRequire('./unknown')
+  const res = await tryRequire('./unknown');
   t.equal(res, null, 'unknown require does not throw');
 });
 
@@ -23,23 +23,37 @@ test('try utf8 package require with BOM', async (t) => {
 });
 
 test('try npm-shrinkwrap detect', async (t) => {
-  const filename = path.resolve(__dirname, 'fixtures', 'shrink-test-v1', 'package.json');
+  const filename = path.resolve(
+    __dirname,
+    'fixtures',
+    'shrink-test-v1',
+    'package.json',
+  );
   const res = await tryRequire(filename);
   t.notEqual(res, null, 'package was found');
   t.equal(res.shrinkwrap, true, 'has and knows about shrinkwrap');
 });
 
 test('try package with no leading, newline trailing', async (t) => {
-  const filename = path.resolve(__dirname, 'fixtures', 'shrink-test-v1', 'package.json');
+  const filename = path.resolve(
+    __dirname,
+    'fixtures',
+    'shrink-test-v1',
+    'package.json',
+  );
   const res = await tryRequire(filename);
   t.notEqual(res, null, 'package was found');
   t.equal(res.leading, '', 'leading is empty string');
   t.equal(res.trailing, '\n', 'trailing is newline');
 });
 
-
 test('try successful require and cached response', async (t) => {
-  const filename = path.resolve(__dirname, 'fixtures', 'with-policy', 'package.json');
+  const filename = path.resolve(
+    __dirname,
+    'fixtures',
+    'with-policy',
+    'package.json',
+  );
 
   let pkg = await tryRequire(filename);
   t.ok(pkg, 'package loaded');

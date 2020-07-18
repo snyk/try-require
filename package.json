@@ -6,6 +6,7 @@
     "lint": "eslint lib test",
     "check-tests": "! grep 'test.only' test/*.test.js -n",
     "env": "node -e 'console.log(process.env, process.versions)'",
+    "format": "prettier --write 'lib/**/*.?s' 'test/**/*.test.?s'",
     "cover": "tap test/*.test.js --cov --coverage-report=lcov",
     "test": "npm run check-tests && npm run lint && tap test/*.test.js --cov --timeout=60",
     "postinstall": "npm --prefix test/fixtures/shrink-test-v1 install && npm --prefix test/fixtures/with-policy install",
@@ -24,6 +25,7 @@
   "homepage": "https://github.com/Snyk/try-require#readme",
   "devDependencies": {
     "eslint": "^6.8.0",
+    "prettier": "^2.0.5",
     "tap": "^14.10.7"
   },
   "dependencies": {
