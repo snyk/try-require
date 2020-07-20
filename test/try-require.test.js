@@ -57,6 +57,6 @@ test('try successful require and cached response', function (t) {
     return tryRequire(filename).then(function (pkg) {
       t.ok(pkg.__cached, 'package loaded (and hit cache)');
     });
-  }).then(t.threw);
+  }).catch(t.threw).then(t.end);
 
 });
