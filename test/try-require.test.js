@@ -1,6 +1,17 @@
+const { execFile } = require('child_process');
+const { promisify } = require('util');
+
 const test = require('tap-only');
 const tryRequire = require('../lib/try-require');
 const path = require('path');
+
+const run = promisify(execFile);
+
+test('install assets', async (t) => {
+  await run('npm', ['--prefix', 'test/fixtures/shrink-test-v1', 'install']);
+  await run('npm', ['--prefix', 'test/fixtures/with-policy', 'install']);
+  t.end();
+});
 
 test('try failure require', function (t) {
   tryRequire('./unknown').then(function (res) {
