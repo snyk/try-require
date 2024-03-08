@@ -4,8 +4,8 @@ metadata:
   name: try-require
   annotations:
     github.com/project-slug: snyk/try-require
-    github.com/team-slug: snyk/hammerhead
+    github.com/team-slug: snyk/cli
 spec:
   type: external-library
   lifecycle: "-"
-  owner: hammerhead
+  owner: cli
