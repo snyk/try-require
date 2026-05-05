@@ -1,1 +1,1 @@
-* @snyk/ignores @snyk/appsec_ignores
+* @snyk/ignores @snyk/appsec_ignores @snyk/platform-experience_guardrails
