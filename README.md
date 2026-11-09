@@ -1,5 +1,11 @@
 # Snyk's (try) require
 
+## Maintenance status
+
+This package is no longer maintained and will not receive further releases.
+Snyk's remaining consumers moved the functionality into their own code; see
+[snyk/policy#222](https://github.com/snyk/policy/pull/222) for the policy implementation.
+
 This package tries to load and parse a `package.json` file. This does *not* load the package into memory (as per `require`).
 
 What snyk-try-require does:
